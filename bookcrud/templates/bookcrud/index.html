@@ -1,0 +1,38 @@
+{% extends 'bookcrud/base.html' %}
+{% load static %}
+{% block js %}
+    <script type="text/javascript" src="{% static 'bookcrud/js/books.js' %}"></script>
+{% endblock %}
+
+{% block content %}
+    <h2 class="text-capitalize text-center"><b>Books</b></h2>
+    <div class="card card-body">
+    <button type="button" class="btn btn-info js-create-book" data-url="{% url 'bookcrud:create-book' %}">Add Book</button>
+
+    <table class="table" id="book-table">
+
+        <thead>
+            <tr>
+                <td>#</td>
+                <td>Title</td>
+                <td>Author</td>
+                <td>Type</td>
+                <td>Published:</td>
+                <td>Pages</td>
+                <td>Price</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% include 'bookcrud/includes/partial-book-list.html' %}
+        </tbody>
+    </table>
+
+        <div class="modal fade" id="modal-book">
+            <div class="modal-dialog">
+                    <div class="modal-content">
+                    </div>
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

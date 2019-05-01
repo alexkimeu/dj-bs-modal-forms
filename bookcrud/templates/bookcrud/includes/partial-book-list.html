@@ -1,0 +1,16 @@
+{% for book in books %}
+            <tr>
+            <td>{{ book.id }}</td>
+            <td>{{ book.title }}</td>
+            <td>{{ book.author }}</td>
+            <td>{{ book.book_type }}</td>
+            <td>{{ book.published }}</td>
+            <td>{{ book.pages }}</td>
+            <td>{{ book.price }}</td>
+            <td>
+                <button class="btn btn-info btn-sm js-update-book" data-url="{% url 'bookcrud:update-book' book.id %}">
+                    <i class="fas fa-edit"></i>
+                </button>
+            </td>
+            </tr>
+        {% endfor %}
