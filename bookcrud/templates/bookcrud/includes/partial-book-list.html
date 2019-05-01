@@ -11,6 +11,9 @@
                 <button class="btn btn-info btn-sm js-update-book" data-url="{% url 'bookcrud:update-book' book.id %}">
                     <i class="fas fa-edit"></i>
                 </button>
+                <button class="btn btn-danger btn-sm js-delete-book" data-url="{% url 'bookcrud:delete-book' book.id %}">
+                    <i class="fas fa-trash"></i>
+                </button>
             </td>
             </tr>
         {% endfor %}

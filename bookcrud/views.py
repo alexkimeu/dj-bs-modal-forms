@@ -43,3 +43,21 @@ def update_book(request, pk):
         form = BookForm(instance=book)
     return save_book_form(request, form, 'bookcrud/includes/partial-book-update.html')
 
+
+def delete_book(request, pk):
+    book = get_object_or_404(Book, pk=pk)
+    data = dict()
+    if request.method == 'POST':
+        book.delete()
+        data['form_is_valid'] = True # This is just to play along with the existing code
+        books = Book.objects.all()
+        data['html_book_list'] = render_to_string('bookcrud/includes/partial-book-list.html', {
+            'books': books
+        })
+    else:
+        context = {'book': book}
+        data['html_form'] = render_to_string('bookcrud/includes/partial-book-delete.html',
+                                             context,
+                                             request=request,
+                                             )
+    return JsonResponse(data)
