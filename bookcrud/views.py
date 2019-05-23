@@ -8,7 +8,8 @@ from django.http import JsonResponse
 # Create your views here.
 def index(request):
     books = Book.objects.all()
-    return render(request, 'bookcrud/index.html', {'books': books})
+    return render(request, 'bookcrud/index.html',
+                  {'books': books})
 
 
 def save_book_form(request, form, template_name):
